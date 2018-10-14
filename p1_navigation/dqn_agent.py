@@ -161,45 +161,28 @@ class ReplayBuffer:
 class DDQNAgent(DQNAgent):
     '''
     Implementation of a DDQN agent that interacts with and learns from the
-    environment
+    environment. 
+
+    This class implements DQNAgent and only learn function is different
     '''
 
     def __init__(self, state_size, action_size, seed):
-        '''Initialize an DoubleDQNAgent object.
-        :param state_size: int. dimension of each state
-        :param action_size: int. dimension of each action
-        :param seed: int. random seed
-        '''
+
         super(DDQNAgent, self).__init__(state_size, action_size, seed)
 
-        # Replay memory
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
-        # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
 
     def learn(self, experiences, gamma):
-        '''Update value parameters using given batch of experience tuples.
-        :param experiences: Tuple[torch.Tensor]. tuple of (s, a, r, s', done)
-        :param gamma: float. discount factor
-        '''
         states, actions, rewards, next_states, dones = experiences
-        rewards_ = torch.clamp(rewards, min=-1., max=1.)
+        rewards_ = torch.clamp(rewards, min=-1.0, max=1.0)
 
-        # arg max_{a} \hat{Q}(s_{t+1}, a, θ_t)
         argmax_actions = self.qnetwork_local(next_states).detach().max(1)[1].unsqueeze(1)
-        # max_Qhat :=  \hat{Q}(s_{t+1}, argmax_actions, θ^−)
         max_Qhat = self.qnetwork_target(next_states).gather(1, argmax_actions)
-        # y_i = r + γ * maxQhat
-        # y_i = r, if done
         Q_target = rewards_ + (gamma * max_Qhat * (1 - dones))
-        # Q(\phi(s_t), a_j; \theta)
         Q_expected = self.qnetwork_local(states).gather(1, actions)
-
-        # perform gradient descent step on on (y_i - Q)**2
         loss = F.mse_loss(Q_expected, Q_target)
-        self.optimizer.zero_grad()  # Clear the gradients
+        self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-
-        # ------------------- update target network ------------------- #
         self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)
