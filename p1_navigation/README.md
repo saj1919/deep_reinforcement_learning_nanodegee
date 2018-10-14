@@ -53,35 +53,3 @@ You need only select the environment that matches your operating system:
 Then, place the file in the `p1_navigation/` folder in the DRLND GitHub repository, and unzip (or decompress) the file.  Next, open `Navigation_Pixels.ipynb` and follow the instructions to learn how to use the Python API to control the agent.
 
 (_For AWS_) If you'd like to train the agent on AWS, you must follow the instructions to [set up X Server](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above.
-
-# NAVIGATION PROJECT SOLUTION
-
-### Code Files 
-
-1. Ipython Files
-    a. **Navigation DQN.ipynb** => Navigation problem solved using Deep Q Network.
-    b. **Navigation DDQN.ipynb** => Navigation problem solved using Double Deep Q Network.
-2. Agent Files
-    a. **dqn_agent.py** => Deep Q Agent code very similar to **dqn** project in nanodegree
-3. Model Files
-    a. **model.py** => Deep Q Network code very similar to **dqn** project in nanodegree
-4. Model Checkpoint Files
-    a. **checkpoint_DQN.pth** => DQN model path
-    b. **checkpoint_DDQN.pth** => DDQN model path
-
-### DQN Scores Plot
-
-![DQN Scores](navigation_dqn_score_plot.png)
-
-Environment solved in 642 episodes!
-
-### DDQN Scores Plot
-
-![DDQN Scores](navigation_ddqn_score_plot.png)
-
-Environment solved in 486 episodes!
-
-# NAVIGATION PIXEL PROJECT SOLUTION
-
-Still trying out pixel code and not completely ready as it is taking time to run network. Looking at this code for reference and trying out --> https://github.com/gtg162y/DRLND/tree/master/P1_Navigation/visual_pixels
-
