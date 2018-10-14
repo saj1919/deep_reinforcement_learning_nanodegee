@@ -23,7 +23,6 @@
     b. **checkpoint_DDQN.pth** => DDQN model path
 
 
-
 ### Learning Algorithm
 
 Deep Q Network algorithm is used ... very similar to dqn project in nanodegree. 
@@ -31,6 +30,15 @@ Deep Q Network algorithm is used ... very similar to dqn project in nanodegree.
 Double DQN algorithm explored and implemented as follows.
 
 ![DDQN Algorithm](DDQN-algo.png)
+
+#### Best Parameters found through experiment 
+n_episodes=2000
+
+eps_start=1.0
+
+eps_end=0.1
+
+eps_decay=0.995
 
 
 ### Plot of Rewards
