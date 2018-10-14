@@ -54,7 +54,7 @@ Then, place the file in the `p1_navigation/` folder in the DRLND GitHub reposito
 
 (_For AWS_) If you'd like to train the agent on AWS, you must follow the instructions to [set up X Server](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above.
 
-# SOLUTION
+# NAVIGATION PROJECT SOLUTION
 
 ### Code Files 
 
@@ -75,8 +75,13 @@ Then, place the file in the `p1_navigation/` folder in the DRLND GitHub reposito
 
 Environment solved in 642 episodes!
 
-### DQN Scores Plot
+### DDQN Scores Plot
 
 ![DDQN Scores](navigation_ddqn_score_plot.png)
 
 Environment solved in 486 episodes!
+
+# NAVIGATION PIXEL PROJECT SOLUTION
+
+Still trying out pixel code and not completely ready as it is taking time to run network. Looking at this code for reference and trying out --> https://github.com/gtg162y/DRLND/tree/master/P1_Navigation/visual_pixels
+
