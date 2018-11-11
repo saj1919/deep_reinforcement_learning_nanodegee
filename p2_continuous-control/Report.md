@@ -26,11 +26,16 @@
 
 ### Learning Algorithm
 
-Deep Q Network algorithm is used ... very similar to dqn project in nanodegree. 
+**Deep Deterministic Policy Gradient (DDPG)**
 
-Double DQN algorithm explored and implemented as follows.
+Although DQN achieved huge success in higher dimensional problem, such as the Atari game, the action space is still discrete. However, many tasks of interest, especially physical control tasks, the action space is continuous. If you discretize the action space too finely, you wind up having an action space that is too large. For instance, assume the degree of free random system is 10. For each of the degree, you divide the space into 4 parts. You wind up having 4¹⁰ =1048576 actions. It is also extremely hard to converge for such a large action space.
 
-![DDQN Algorithm](DDQN-algo.png)
+DDPG relies on the actor-critic architecture with two eponymous elements, actor and critic. An actor is used to tune the parameter 𝜽 for the policy function, i.e. decide the best action for a specific state.
+
+A critic is used for evaluating the policy function estimated by the actor according to the temporal difference (TD) error.
+
+![DDPG Algorithm](ddpg_algorithm.png)
+
 
 #### Best Parameters found through experiment 
 n_episodes=2000
