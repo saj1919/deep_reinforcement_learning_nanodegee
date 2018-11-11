@@ -24,6 +24,7 @@
     b. **checkpoint_critic_p1.pth** => Project-option-1 critic model file
 
 
+
 ### Learning Algorithm
 
 **Deep Deterministic Policy Gradient (DDPG)**
@@ -37,30 +38,39 @@ A critic is used for evaluating the policy function estimated by the actor accor
 ![DDPG Algorithm](ddpg_algorithm.png)
 
 
-#### Best Parameters found through experiment 
+
+### Best Parameters found through experiment 
 
 Tried to use 64, 256 as batch_size but 128 gives better convergence, otherwise all other constants are same as ddpg code.
 
-BUFFER_SIZE = int(1e5)  # replay buffer size
-BATCH_SIZE = 128        # minibatch size
-GAMMA = 0.99            # discount factor
-TAU = 1e-3              # for soft update of target parameters
-LR_ACTOR = 2e-4         # learning rate of the actor 
-LR_CRITIC = 2e-4        # learning rate of the critic
-WEIGHT_DECAY = 0        # L2 weight decay
+    BUFFER_SIZE = int(1e5)  # replay buffer size
+
+    BATCH_SIZE = 128        # minibatch size
+
+    GAMMA = 0.99            # discount factor
+
+    TAU = 1e-3              # for soft update of target parameters
+
+    LR_ACTOR = 2e-4         # learning rate of the actor 
+
+    LR_CRITIC = 2e-4        # learning rate of the critic
+
+    WEIGHT_DECAY = 0        # L2 weight decay
 
 Neural network of dense layer 1 of 64 units and dense layer 2 of 128 units used. Single layer do not converge somehow. 
 
 
+
 ### Plot of Rewards
 
-#### DDPG Scores Plot
+**DDPG Scores Plot**
 
 ![DDPG Scores](p2_option1_graph.png)
 
 Environment solved in 90 episodes (as got average score >30 at 190th episode)
 
 Problem-2 with 20 agnets do not stabilize with DDPG over 100 consecutive episodes though it reaches score of 30 in 15 episodes only using agent score averaging.
+
 
 
 ### Ideas for Future Work
@@ -70,4 +80,5 @@ Problem-2 with 20 agnets do not stabilize with DDPG over 100 consecutive episode
 2. Try to tweak ddpg for 20 agnets ... I was getting >30 score then it was moving between 28-30 for more than 200 iteration. Certainly possible to achieve score of 30.
 
 3. Try optional project crawl with different agents learned above.
+
 
