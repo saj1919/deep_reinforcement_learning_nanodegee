@@ -1,4 +1,4 @@
-# CONTINUOUS CONTROL - PROJECT OPTION 1 SOLUTION
+# CONTINUOUS CONTROL - PROJECT OPTION 1 (Single Agent) SOLUTION
 
 ### Code Files 
 
@@ -38,45 +38,36 @@ A critic is used for evaluating the policy function estimated by the actor accor
 
 
 #### Best Parameters found through experiment 
-n_episodes=2000
 
-eps_start=1.0
+Tried to use 64, 256 as batch_size but 128 gives better convergence, otherwise all other constants are same as ddpg code.
 
-eps_end=0.1
+BUFFER_SIZE = int(1e5)  # replay buffer size
+BATCH_SIZE = 128        # minibatch size
+GAMMA = 0.99            # discount factor
+TAU = 1e-3              # for soft update of target parameters
+LR_ACTOR = 2e-4         # learning rate of the actor 
+LR_CRITIC = 2e-4        # learning rate of the critic
+WEIGHT_DECAY = 0        # L2 weight decay
 
-eps_decay=0.995
+Neural network of dense layer 1 of 64 units and dense layer 2 of 128 units used. Single layer do not converge somehow. 
 
 
 ### Plot of Rewards
 
-#### DQN Scores Plot
+#### DDPG Scores Plot
 
-![DQN Scores](navigation_dqn_score_plot.png)
+![DDPG Scores](p2_option1_graph.png)
 
-Environment solved in 642 episodes
+Environment solved in 90 episodes (as got average score >30 at 190th episode)
 
-Scores => mean - 8.174, deviation - 5.525
-
-Window Avg Scores => mean - 7.166, deviation - 4.435
-
-#### DDQN Scores Plot
-
-![DDQN Scores](navigation_ddqn_score_plot.png)
-
-Environment solved in 486 episodes
-
-Scores => mean - 6.872, deviation - 5.244
-
-Window Avg Scores => mean - 5.519, deviation - 4.220
+Problem-2 with 20 agnets do not stabilize with DDPG over 100 consecutive episodes though it reaches score of 30 in 15 episodes only using agent score averaging.
 
 
 ### Ideas for Future Work
 
-1. Using different kind of network (RNN, LSTM, CNN) apart from default network given in dqn project.
+1. Read and use other algorithms for parallelization in 20-agnet project like PPO, A3C, and D4PG 
 
-2. Using keras in the backend instead of pytorch
+2. Try to tweak ddpg for 20 agnets ... I was getting >30 score then it was moving between 28-30 for more than 200 iteration. Certainly possible to achieve score of 30.
 
-3. Try different kind of Deep Q network strategy
-
-4. Still trying out pixel code and not completely ready as it is taking time to run network. Looking at this code for reference and trying out --> https://github.com/gtg162y/DRLND/tree/master/P1_Navigation/visual_pixels
+3. Try optional project crawl with different agents learned above.
 
