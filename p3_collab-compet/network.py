@@ -12,19 +12,7 @@ def hidden_init(layer):
 
 
 class Actor(nn.Module):
-    """Actor (Policy) Model."""
-
     def __init__(self, action_size, state_size, hidden_units, seed, gate=F.relu, final_gate=F.tanh):
-        """Initialize parameters and build model.
-        Params
-        ======
-            state_size (int): Dimension of each state
-            action_size (int): Dimension of each action
-            hidden_units (array): Number of nodes for layers
-            seed (int): Random seed
-            gate (function): activation function
-            final_gate (function): final activation function
-        """
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.gate = gate
@@ -42,7 +30,6 @@ class Actor(nn.Module):
 
 
     def forward(self, states):
-        """Build an actor (policy) network that maps states -> actions."""
         x = self.normalizer(states)
         for layer in self.layers:
             x = self.gate(layer(x))
@@ -50,18 +37,7 @@ class Actor(nn.Module):
 
     
 class Critic(nn.Module):
-    """Critic (Value) Model."""
-
     def __init__(self, action_size, state_size, hidden_units, seed, gate=F.relu, dropout=0.2):
-        """Initialize parameters and build model.
-        Params
-        ======
-            state_size (int): Dimension of each state
-            action_size (int): Dimension of each action
-            hidden_units (array): Number of nodes for layers
-            seed (int): Random seed
-            gate (function): activation function
-        """
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.gate = gate
@@ -85,7 +61,6 @@ class Critic(nn.Module):
         self.output.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, states, actions):
-        """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
         xs = self.normalizer(states)
         xs = self.gate(self.layers[0](xs))
         x = torch.cat((xs, actions), dim=1)
