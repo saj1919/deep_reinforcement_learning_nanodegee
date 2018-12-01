@@ -3,7 +3,7 @@
 [image1]: tennis_play.gif "Trained Agent"
 [image2]: tennis_episode_scores.png "Score Episode Plot"
 
-# Project 3: Collaboration and Competition
+# Project 3 Solution for Tennis env (Collaboration and Competition)
 
 ## Project Files
     1. Tennis.ipynb  -> Main training file to be run.
